@@ -1,94 +1,199 @@
+// ==============================
+// AFRIQAI INDEX.HTML (BLOOMBERG-LEVEL UI — REFINED)
+// ==============================
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AfriQAI — Africa Intelligence Layer</title>
-  <style>
-    body { margin:0; background:#07111f; color:#fff; font-family:Arial, sans-serif; }
-    .container { width:92%; margin:auto; }
-    .topbar { display:flex; justify-content:space-between; align-items:center; padding:18px 0; border-bottom:1px solid #1c2a3a; }
-    .logo { font-size:42px; color:#d6a84f; font-weight:700; }
-    .nav { display:flex; gap:24px; font-size:15px; color:#cbd5e1; }
-    .hero { display:grid; grid-template-columns:2fr 1fr; gap:20px; margin:24px 0; }
-    .panel { background:#0d1b2d; border:1px solid #1e293b; border-radius:12px; padding:20px; }
-    .section-title { font-size:14px; color:#94a3b8; margin-bottom:12px; text-transform:uppercase; }
-    .briefing-grid { display:grid; grid-template-columns:40% 30% 30%; gap:16px; margin:24px 0; }
-    .story-card { background:#0b1626; padding:14px; border-radius:10px; margin-bottom:12px; border-left:3px solid #2563eb; }
-    .feed-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:24px 0; }
-    .pillars { display:grid; grid-template-columns:repeat(7,1fr); gap:10px; margin:24px 0; }
-    .pillar { background:#0d1b2d; padding:12px; border-radius:8px; text-align:center; font-size:13px; }
-  </style>
+<meta charset="UTF-8">
+<title>AfriQAI Intelligence</title>
+
+<style>
+body {
+  margin: 0;
+  background: #0b0f14;
+  color: #e6e8eb;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.container {
+  width: 92%;
+  margin: auto;
+}
+
+/* HEADER */
+.header {
+  padding: 20px 0;
+  border-bottom: 1px solid #1f2a36;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.nav span {
+  margin-left: 20px;
+  font-size: 13px;
+  color: #9aa4af;
+  cursor: pointer;
+}
+
+/* HERO */
+.hero {
+  padding: 30px;
+  background: #11161c;
+  margin-top: 20px;
+  border-radius: 6px;
+}
+
+.hero h1 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: #9aa4af;
+}
+
+/* MARKET SNAPSHOT */
+.market {
+  margin-top: 20px;
+  background: #11161c;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.asset {
+  width: 18%;
+  font-size: 13px;
+}
+
+.up { color: #00c853; }
+.down { color: #ff3d00; }
+.flat { color: #9aa4af; }
+
+/* SECTIONS */
+.section {
+  margin-top: 30px;
+}
+
+.section h2 {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.card {
+  background: #131a21;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-left: 3px solid #ff9800;
+  border-radius: 4px;
+}
+
+.card small {
+  color: #9aa4af;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+</style>
 </head>
+
 <body>
-  <div class="container">
-    <div class="topbar">
-      <div class="logo">AfriQAI</div>
-      <div class="nav">
-        <span>Power</span>
-        <span>Capital</span>
-        <span>Frontier</span>
-        <span>Infrastructure</span>
-        <span>Sports</span>
-        <span>Culture</span>
-        <span>Global</span>
-      </div>
-    </div>
+<div class="container">
 
-    <div class="hero">
-      <div class="panel">
-        <div class="section-title">Lead Intelligence</div>
-        <h1>Nigeria, Africa, and Global Forces — One Intelligence Layer</h1>
-        <p>This homepage is display-first. Weighting logic lives in the backend ranking engine, not in homepage space allocation.</p>
-      </div>
-      <div class="panel">
-        <div class="section-title">Live Signals</div>
-        <div class="story-card">CBN policy shift flagged by Reuters + local confirmation</div>
-        <div class="story-card">AI funding round impacts Lagos startup valuations</div>
-      </div>
-    </div>
-
-    <div class="panel">
-      <div class="section-title">Daily Africa Intelligence Briefing</div>
-      <div class="briefing-grid">
-        <div>
-          <h3>40% Nigeria Intelligence</h3>
-          <p>Balanced blend of Nigeria stories from Nigerian, African, and global outlets.</p>
-          <div class="story-card">Nigeria economy / policy / governance</div>
-          <div class="story-card">Foreign outlet breaking Nigeria development</div>
-        </div>
-        <div>
-          <h3>30% Africa Intelligence</h3>
-          <p>Pan-African developments validated by both regional and international coverage.</p>
-          <div class="story-card">Kenya, South Africa, Egypt, Ghana signals</div>
-        </div>
-        <div>
-          <h3>30% Global Impact Layer</h3>
-          <p>External global stories filtered by measurable impact on Nigeria and Africa.</p>
-          <div class="story-card">Fed / China / OPEC / EU impact</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel">
-      <div class="section-title">Pillar Processing Logic (Backend Only)</div>
-      <div class="pillars">
-        <div class="pillar">Power 5%</div>
-        <div class="pillar">Capital 15%</div>
-        <div class="pillar">Frontier 40%</div>
-        <div class="pillar">Infra 10%</div>
-        <div class="pillar">Sports 15%</div>
-        <div class="pillar">Culture 10%</div>
-        <div class="pillar">Global 5%</div>
-      </div>
-      <p><strong>Important:</strong> These percentages govern story processing and ranking volume across the day, not homepage visual space.</p>
-    </div>
-
-    <div class="feed-grid">
-      <div class="panel"><h3>Frontier Stream</h3><p>High-volume AI, startup, innovation processing engine.</p></div>
-      <div class="panel"><h3>Capital Stream</h3><p>Markets, FX, oil, macroeconomic intelligence.</p></div>
-      <div class="panel"><h3>Global Shock Layer</h3><p>International events affecting Africa outcomes.</p></div>
-    </div>
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">AfriQAI</div>
+  <div class="nav">
+    <span>Power</span>
+    <span>Capital</span>
+    <span>Frontier</span>
+    <span>Infrastructure</span>
+    <span>Sports</span>
+    <span>Culture</span>
+    <span>Global</span>
   </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Daily Africa Intelligence Briefing</h1>
+  <p>40% Nigeria | 30% Africa | 30% Global — balanced intelligence synthesis</p>
+</div>
+
+<!-- MARKET SNAPSHOT -->
+<div class="market">
+
+  <!-- ROW 1: FX -->
+  <div class="row">
+    <div class="asset">NGN/USD<br>₦1,520 <span class="down">▼ -0.8%</span></div>
+    <div class="asset">ZAR/USD<br>R18.45 <span class="up">▲ +0.3%</span></div>
+    <div class="asset">EGP/USD<br>E£48.20 <span class="down">▼ -0.5%</span></div>
+    <div class="asset">EUR/USD<br>1.07 <span class="up">▲ +0.2%</span></div>
+    <div class="asset">USD/CNY<br>7.24 <span class="flat">▬ 0.0%</span></div>
+  </div>
+
+  <!-- ROW 2: ASSETS -->
+  <div class="row">
+    <div class="asset">Oil<br>$82.40 <span class="up">▲ +1.2%</span></div>
+    <div class="asset">Gold<br>$2,340 <span class="up">▲ +0.6%</span></div>
+    <div class="asset">Gas<br>$2.85 <span class="down">▼ -0.9%</span></div>
+    <div class="asset">Bitcoin<br>$64,200 <span class="up">▲ +2.5%</span></div>
+    <div class="asset">Ethereum<br>$3,100 <span class="up">▲ +1.8%</span></div>
+  </div>
+
+</div>
+
+<!-- LIVE SIGNALS -->
+<div class="section">
+  <h2>Live Signals</h2>
+  <div class="card">AI funding surge in US signals capital inflow opportunity for African startups<br><small>Frontier | Global Impact</small></div>
+  <div class="card">Oil prices climb on geopolitical tensions, boosting Nigeria revenue outlook<br><small>Capital | Nigeria Impact</small></div>
+  <div class="card">China policy shift affects African infrastructure financing pipeline<br><small>Infrastructure | Africa Impact</small></div>
+</div>
+
+<!-- LATEST INTELLIGENCE -->
+<div class="section">
+  <h2>Latest Intelligence</h2>
+  <div class="card">
+    <strong>Nigeria FX pressure deepens amid global dollar strength</strong>
+    <p>Currency volatility reflects macroeconomic tightening globally, with implications for import costs and inflation.</p>
+  </div>
+</div>
+
+<!-- AFRICAN INTELLIGENCE -->
+<div class="section grid">
+
+  <div>
+    <h2>Trend Signals</h2>
+    <div class="card">Rising AI adoption across African fintech ecosystems</div>
+    <div class="card">Increased infrastructure investment from China</div>
+  </div>
+
+  <div>
+    <h2>Risk Indicators</h2>
+    <div class="card">Currency instability across frontier markets</div>
+    <div class="card">Oil price volatility impacting fiscal planning</div>
+  </div>
+
+</div>
+
+</div>
 </body>
 </html>
