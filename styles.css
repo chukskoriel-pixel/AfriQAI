@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0b0b0b;
+    color: #fff;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #111;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: orange;
+}
+
+.nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #ccc;
+}
+
+.signin-btn {
+    background: orange;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 32px;
+}
+
+/* FEED */
+.feed {
+    padding: 30px;
+}
+
+.news-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.news-card {
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 10px;
+}

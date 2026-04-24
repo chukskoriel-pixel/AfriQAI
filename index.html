@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>AfriQAI — Global Intelligence. African Insight.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0B0F14; font-family: 'Inter', sans-serif; color: #FFFFFF; line-height: 1.5; scroll-behavior: smooth; }
+    .container { max-width: 1440px; margin: 0 auto; padding: 0 40px; }
+
+    /* HEADER */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(8px);
+      background: rgba(11, 15, 20, 0.85);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo-area { display: flex; align-items: center; gap: 48px; }
+    .logo-wrapper { display: flex; flex-direction: column; line-height: 1.2; }
+    .logo { font-size: 28px; font-weight: 800; background: linear-gradient(135deg, #D4AF37 0%, #F5E6A3 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .logo-tagline { font-size: 0.65rem; letter-spacing: 1px; color: #A0A8B5; margin-top: 2px; }
+    .nav-links { display: flex; gap: 24px; align-items: center; flex-wrap: nowrap; }
+    .nav-links a { color: #C0C8D4; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: 0.2s; cursor: pointer; }
+    .nav-links a:hover { color: #D4AF37; }
+    .search-icon { font-size: 1.2rem; cursor: pointer; margin-left: 8px; color: #C0C8D4; }
+    .signin-btn { padding: 6px 18px; border-radius: 32px; font-size: 0.8rem; font-weight: 600; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.4); color: #D4AF37; cursor: pointer; }
+
+    /* HERO 70/30 */
+    .hero-grid { display: flex; gap: 24px; margin: 40px 0 32px; align-items: stretch; }
+    .hero-main { flex: 2.2; background: linear-gradient(145deg, #121821, #0E131C); padding: 24px; border-radius: 24px; }
+    .hero-signals { flex: 1; background: #0D121A; padding: 24px; border-radius: 24px; border-left: 3px solid #D4AF37; }
+    .worldcup-ribbon { background: linear-gradient(95deg, #1A1F2A, #0F131C); padding: 8px 18px; border-radius: 60px; border-left: 4px solid #D4AF37; display: inline-block; font-weight: 700; font-size: 0.75rem; }
+    .signal-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; }
+    .live-dot { display: inline-block; width: 8px; height: 8px; background: #00E676; border-radius: 50%; margin-right: 8px; animation: pulse 1.2s infinite; }
+    @keyframes pulse { 0% { opacity: 0.4; } 100% { opacity: 1; } }
+
+    /* MARKET SNAPSHOT – single row */
+    .market-section { margin: 32px 0; }
+    .market-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; background: #0E131C; border-radius: 20px; padding: 20px 24px; border: 1px solid rgba(255,255,255,0.05); }
+    .market-item { min-width: 0; }
+    .market-title { font-size: 0.8rem; color: #A0A8B5; margin-bottom: 6px; }
+    .market-value { font-weight: 700; font-size: 1.2rem; margin-right: 6px; }
+    .market-change { font-size: 0.8rem; }
+    .positive { color: #00C853; }
+    .negative { color: #FF3D00; }
+    .bar-container { background: #2A2F3A; height: 4px; border-radius: 4px; margin-top: 8px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 4px; width: 0%; }
+    .green-bar { background: #00C853; }
+    .red-bar { background: #FF3D00; }
+
+    /* Sections */
+    .section-header { display: flex; justify-content: space-between; align-items: baseline; margin: 48px 0 20px 0; }
+    .section-header h2 { font-size: 1.4rem; font-weight: 700; border-left: 4px solid #D4AF37; padding-left: 14px; text-transform: uppercase; }
+    .section-header a { color: #A0A8B5; font-size: 0.8rem; cursor: pointer; transition: 0.2s; text-decoration: none; }
+    .section-header a:hover { color: #D4AF37; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .premium-dual { display: flex; gap: 32px; margin: 60px 0 40px; align-items: stretch; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1.2fr; gap: 30px; }
+
+    .card { background: #121821; border-radius: 24px; padding: 1.5rem; transition: 0.25s; border: 1px solid rgba(255,255,255,0.05); }
+    .story-cat { font-size: 0.7rem; text-transform: uppercase; color: #D4AF37; margin-bottom: 8px; }
+    .story-title { font-weight: 700; font-size: 1rem; margin: 8px 0; }
+    .read-time { font-size: 0.7rem; color: #6C7A8A; margin-top: 8px; display: inline-block; }
+    .latest-list { background: #0E131C; border-radius: 20px; list-style: none; padding: 0; }
+    .latest-list li { display: flex; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer; }
+    .load-more { text-align: center; padding: 16px; color: #1E6BFF; font-weight: 600; cursor: pointer; }
+    .video-card { background: #0D121A; border-radius: 20px; overflow: hidden; }
+    .video-thumb { height: 140px; background: linear-gradient(145deg, #1A2533, #10161F); display: flex; align-items: center; justify-content: center; }
+    .play-btn { background: #D4AF37; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+    .compact-card { flex: 1; background: #121821; border-radius: 28px; border: 1px solid rgba(212,175,55,0.2); display: flex; flex-direction: column; }
+    .card-header { padding: 24px 28px 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .card-header h3 { font-size: 1.5rem; font-weight: 700; background: linear-gradient(135deg, #D4AF37, #F5E6A3); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .card-body { padding: 20px 28px 28px; flex: 1; }
+    .btn-sky { background: linear-gradient(95deg, #1E6BFF, #3A8DFF); border: none; padding: 12px 20px; border-radius: 40px; color: white; font-weight: 700; width: 100%; cursor: pointer; }
+    .subscribe-note { font-size: 0.7rem; color: #A0A8B5; margin: 12px 0; display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* Modal */
+    .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 1000; }
+    .modal-content { background: #121821; max-width: 600px; width:90%; max-height: 85vh; overflow-y: auto; padding: 32px; border-radius: 28px; border: 1px solid #D4AF37; }
+    .close-modal { background: none; border: none; color: #A0A8B5; float: right; font-size: 1.5rem; cursor: pointer; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; color: #D4AF37; margin-bottom: 6px; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; background: #0B0F14; border: 1px solid #2A3342; border-radius: 12px; padding: 10px 14px; color: white; }
+
+    footer { margin-top: 40px; padding: 40px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
+    .social-icons { display: flex; gap: 24px; margin-top: 20px; flex-wrap: nowrap; }
+    .social-icons svg { width: 22px; height: 22px; fill: #A0A8B5; transition: 0.2s; cursor: pointer; }
+
+    @media (max-width: 1000px) {
+      .container { padding: 0 20px; }
+      .hero-grid, .premium-dual, .footer-grid { flex-direction: column; }
+      .market-row, .grid-3, .two-col-grid, .footer-grid { grid-template-columns: 1fr; }
+      .social-icons { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo-area">
+      <div class="logo-wrapper">
+        <div class="logo">AFRIQAI</div>
+        <div class="logo-tagline">Africa, Decoded.</div>
+      </div>
+      <div class="nav-links">
+        <a>Home</a><a>Signals</a><a>Power</a><a>Capital</a><a>Frontier</a>
+        <a>Infrastructure</a><a>Sports</a><a>Culture</a><a>Global</a>
+        <span class="search-icon">🔍</span>
+      </div>
+    </div>
+    <button class="signin-btn" id="signInBtn">Sign In</button>
+  </header>
+
+  <!-- HERO + LIVE SIGNALS -->
+  <div class="hero-grid">
+    <div class="hero-main">
+      <div style="display:flex; justify-content:flex-end;"><div class="worldcup-ribbon"><span>🏆 2026 WORLD CUP INITIATIVE</span> | DAY 1 OF 53</div></div>
+      <div style="color:#D4AF37; font-size:12px; margin-top:12px;">🔴 WORLD CUP SERIES — THE AFRICAN EDGE</div>
+      <h1 style="font-size:2.2rem; margin:16px 0;">Africa’s AI Revolution: Startups, Talent & the Next $100B Opportunity</h1>
+      <p style="color:#A0A8B5;">From fintech to agriculture, a new generation of innovators is solving real problems at scale.</p>
+      <div style="display:flex; gap:20px; margin:16px 0;"><span>📘 12 min read</span><span>💡 Frontier</span></div>
+      <button class="btn-sky" style="width:auto; padding:10px 24px;">Read Full Briefing →</button>
+    </div>
+    <div class="hero-signals">
+      <h3><span class="live-dot"></span> LIVE SIGNALS</h3>
+      <div id="liveSignalsContainer"></div>
+      <div style="margin-top:16px; text-align:right;"><a id="viewAllSignals" style="color:#D4AF37; cursor:pointer;">View All Signals →</a></div>
+    </div>
+  </div>
+
+  <!-- MARKET SNAPSHOT -->
+  <div class="market-section"><div style="font-size:12px; color:#A0A8B5; margin-bottom:12px;">MARKET SNAPSHOT</div><div class="market-row" id="marketSnapshot"></div></div>
+
+  <!-- POWER STORIES -->
+  <div class="section-header"><h2>POWER STORIES</h2><a id="powerMoreLink">View All Power Stories →</a></div>
+  <div class="grid-3" id="powerStoriesGrid"></div>
+
+  <!-- INTELLIGENCE FEED -->
+  <div class="section-header"><h2>INTELLIGENCE FEED</h2><a id="intelMoreLink">View All Intelligence Feed →</a></div>
+  <div class="grid-3" id="intelFeedGrid"></div>
+
+  <!-- AFRICAN INTELLIGENCE -->
+  <div class="section-header"><h2>AFRICAN INTELLIGENCE</h2><a id="intelligenceMoreLink">View All African Intelligence →</a></div>
+  <div class="grid-3" id="intelligenceStrip"></div>
+
+  <!-- LATEST STORIES -->
+  <div class="section-header"><h2>LATEST STORIES</h2><a id="latestArchiveLink">View All Latest Stories →</a></div>
+  <div class="two-col-grid">
+    <ul class="latest-list" id="latestLeftList"></ul>
+    <ul class="latest-list" id="latestRightList"></ul>
+  </div>
+  <div class="load-more" id="loadMoreLatest">LOAD MORE STORIES ↓</div>
+
+  <!-- SHORT VIDEOS -->
+  <div class="section-header"><h2>SHORT VIDEOS</h2><a id="videosMoreLink">View All Short Videos →</a></div>
+  <div class="grid-3" id="videosGrid"></div>
+
+  <!-- PREMIUM CARDS -->
+  <div class="premium-dual">
+    <div class="compact-card">
+      <div class="card-header"><h3>Nominate the individuals shaping Africa’s next global story.</h3></div>
+      <div class="card-body">
+        <div class="nominate-teaser" id="openNominateModalBtn" style="cursor:pointer;">
+          <p>✨ Submit profiles of leaders, innovators, and cultural forces redefining Africa’s influence across the world.</p>
+          <p style="margin-top: 12px; color: #1E6BFF; font-weight: 500;">Click to open nomination form →</p>
+        </div>
+      </div>
+    </div>
+    <div class="compact-card">
+      <div class="card-header"><h3>SUBSCRIBE TO INTELLIGENCE</h3></div>
+      <div class="card-body">
+        <div class="form-group"><label>Email Address</label><input type="email" id="subEmail" placeholder="your@email.com"><div class="field-hint">Used only for delivering your daily AfriQAI intelligence briefing.</div></div>
+        <div class="subscribe-note"><span>🔒</span> You can unsubscribe anytime. <span>📬</span> We don’t flood your inbox.<br>We deliver clarity — once a day, at intelligence level.</div>
+        <button class="btn-sky" id="subscribeBriefingBtn">Activate Briefings →</button>
+        <div id="subSuccessMsg" style="display:none; margin-top:16px; background:#0B2E1A; padding:12px; border-radius:12px; text-align:center;">✅ You’re in. Your first briefing arrives shortly.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-logo">
+        <div class="logo" style="font-size:24px;">AFRIQAI</div>
+        <div class="logo-tagline" style="margin-top:4px;">Africa, Decoded.</div>
+        <div class="social-icons">
+          <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9v-7h-2.6v-2.9h2.6V9.7c0-2.6 1.5-4 3.9-4 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.3 0-1.7.8-1.7 1.6v1.9h2.9l-.5 2.9h-2.4v7A10 10 0 0022 12"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l8-9-7-11h6l4 6z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3 .1 4.4 1.6 4.5 4.5.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3-1.6 4.4-4.5 4.5-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3-.1-4.4-1.6-4.5-4.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-3 1.6-4.4 4.5-4.5C8.4 2.2 8.8 2.2 12 2.2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2h3a5 5 0 005 5v3a8 8 0 01-5-2v7a6 6 0 11-6-6 6 6 0 012 0v3a3 3 0 10-2 2.8V2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M4 3a2 2 0 110 4 2 2 0 010-4zm0 5h4v13H4V8zm7 0h3v2h.1c.4-.7 1.4-2 3-2 3.2 0 3.9 2.1 3.9 4.8V21h-4v-6.4c0-1.5 0-3.4-2-3.4s-2.3 1.6-2.3 3.3V21h-4V8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M20 3.5A11.8 11.8 0 0012.2 0C5.6 0 .2 5.4.2 12c0 2.1.6 4.2 1.7 6L0 24l6.2-1.6a11.9 11.9 0 005.9 1.5c6.6 0 12-5.4 12-12 0-3.2-1.2-6.1-3.4-8.4z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M23 7s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C17.4 3 12 3 12 3h0s-5.4 0-8.1.6c-.4.1-1.3.1-2.1 1C1.2 5.3 1 7 1 7S1 8.7 1 10.4v1.2C1 13.3 1 15 1 15s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1C6.6 19 12 19 12 19s5.4 0 8.1-.6c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.4.8-2.4s0-1.7 0-3.4v-1.2C23 8.7 23 7 23 7z"/></svg>
+        </div>
+      </div>
+      <div><h4>Company</h4><p>About</p><p>Careers</p><p>Advertise</p><p>Contact</p></div>
+      <div><h4>Products</h4><p>Reports</p><p>Intelligence Dashboard</p><p>Mobile App</p><p>API Access</p></div>
+      <div><h4>Legal</h4><p>Terms of Use</p><p>Privacy Policy</p><p>Cookie Policy</p><p>Disclaimer</p></div>
+      <div><h4>Get in Touch</h4><p>info@afriqai.co</p><p>Lagos, Nigeria</p><p>© AfriQAI 2026. All rights reserved.</p></div>
+    </div>
+  </footer>
+</div>
+
+<!-- Nomination Modal -->
+<div id="nominateModal" class="modal">
+  <div class="modal-content">
+    <button class="close-modal" id="closeModalBtn">&times;</button>
+    <h3>Nominate an African leader</h3>
+    <p style="margin-bottom:20px;">Who should the world be paying attention to?</p>
+    <div class="form-group"><label>Full Name</label><input type="text" id="nomFullName" placeholder="Enter full legal or known name"><div class="field-hint">Use the name they are publicly recognized by.</div></div>
+    <div class="form-group"><label>Country or Region</label><input type="text" id="nomRegion" placeholder="e.g. Nigeria, Kenya, Diaspora (UK/US)"></div>
+    <div class="form-group"><label>Area of Influence</label><select id="nomInfluence"><option>Technology & Innovation</option><option>Politics & Governance</option><option>Finance & Markets</option><option>Energy & Infrastructure</option><option>Culture & Entertainment</option><option>Science & Research</option><option>Sports & Global Influence</option></select></div>
+    <div class="form-group"><label>Why should the world pay attention?</label><textarea id="nomImpact" rows="3" placeholder="Focus on achievements, influence, and measurable change — not biography."></textarea></div>
+    <div class="form-group"><label>Supporting Evidence (Optional)</label><input type="text" id="nomLinks" placeholder="Articles, profiles, reports, or social links"><div class="field-hint">Add credible references where possible.</div></div>
+    <button class="btn-sky" id="modalSubmitBtn">Submit Nomination →</button>
+    <div class="trust-note" style="margin-top:20px;">All submissions are subject to editorial verification and intelligence review before publication.</div>
+    <div id="modalSuccess" style="display:none; margin-top:16px; background:#0B2E1A; padding:12px; border-radius:12px; text-align:center;">✅ Nomination received. Our team will review.</div>
+  </div>
+</div>
+
+<script>
+  // ---------- LIVE SIGNALS (mock) ----------
+  const dummySignals = [
+    { text: "Dangote Refinery expands output by 25%", time: new Date(Date.now()-2*60000) },
+    { text: "AfCFTA digital protocol launched", time: new Date(Date.now()-7*60000) },
+    { text: "Nigeria inflation hits 28.9%", time: new Date(Date.now()-15*60000) },
+    { text: "Google AI hub opens in Ghana", time: new Date(Date.now()-25*60000) },
+    { text: "Oil prices dip $2.3/bbl", time: new Date(Date.now()-40*60000) }
+  ];
+  function renderSignals(arr) {
+    let html = '';
+    arr.forEach(s => {
+      let mins = Math.floor((new Date() - new Date(s.time)) / 60000);
+      if(isNaN(mins)) mins = 2;
+      html += `<div class="signal-item"><span><span class="live-dot"></span> ${s.text}</span><span>${mins}m ago</span></div>`;
+    });
+    document.getElementById('liveSignalsContainer').innerHTML = html;
+  }
+  async function fetchSignals() { try { let res=await fetch('/api/signals'); if(!res.ok) throw new Error(); let data=await res.json(); renderSignals(data.slice(0,5)); } catch(e){ renderSignals(dummySignals); } }
+
+  // ---------- MARKET DATA (single row) ----------
+  const marketData = [
+    { title:"NGX All-Share", value:"+0.68%", change:0.68, pos:true },
+    { title:"Brent Oil", value:"$82.45", change:-0.3, pos:false, displayChange:"-0.3%" },
+    { title:"Bitcoin", value:"$62,913", change:1.8, pos:true, displayChange:"+1.8%" },
+    { title:"₦/$", value:"₦1,460.25", change:-0.12, pos:false, displayChange:"-0.12%" },
+    { title:"₦/€", value:"₦1,550.10", change:0.24, pos:true, displayChange:"+0.24%" },
+    { title:"₦/¥", value:"₦194.21", change:-0.05, pos:false, displayChange:"-0.05%" }
+  ];
+  function renderMarket() {
+    let html = '';
+    marketData.forEach(m => {
+      let barWidth = Math.min(Math.abs(m.change)*30, 90);
+      let barColor = m.pos ? "green-bar" : "red-bar";
+      let changeText = m.displayChange || (m.pos ? `+${m.change}%` : `${m.change}%`);
+      html += `<div class="market-item"><div class="market-title">${m.title}</div><div class="market-value ${m.pos?'positive':'negative'}">${m.value}</div><div class="market-change ${m.pos?'positive':'negative'}">${changeText}</div><div class="bar-container"><div class="bar-fill ${barColor}" style="width:${barWidth}%"></div></div></div>`;
+    });
+    document.getElementById('marketSnapshot').innerHTML = html;
+  }
+
+  // ---------- ARTICLES with realistic read time ----------
+  function generateReadTime(text) {
+    const wordsPerMinute = 200;
+    const wordCount = (text || "").split(/\s+/).length;
+    const minutes = Math.max(1, Math.ceil(wordCount / wordsPerMinute));
+    return `${minutes} min read`;
+  }
+
+  const powerArticles = [
+    { title: "Pan-African summit passes unified trade protocol", category: "Power", summary: "Governance & leadership breakthrough", content: "Leaders from 54 nations agreed on a new trade framework expected to boost intra-African commerce by 22% over two years." },
+    { title: "South Africa elections: coalition dynamics shift", category: "Power", summary: "State dynamics redefined", content: "Early polling suggests a multi-party coalition may form for the first time, altering long-standing political structures." },
+    { title: "Nigeria's digital economy bill signed into law", category: "Capital", summary: "New regulatory framework for tech investment", content: "The legislation provides tax incentives for startups and establishes a $500 million digital infrastructure fund." }
+  ];
+  const intelArticles = [
+    { title: "NGX hits record high on tech rally", category: "Capital", summary: "Market momentum surges +12% in Q2", content: "The benchmark index crossed 100,000 points for the first time, driven by fintech and telecom stocks." },
+    { title: "Flutterwave plans dual listing", category: "Frontier", summary: "Startup ecosystem reaches $6B valuation", content: "The African payments unicorn is exploring IPOs in both Lagos and New York later this year." },
+    { title: "Lagos to Kano rail project secures $2.3B loan", category: "Infrastructure", summary: "Energy & transport integration", content: "The African Development Bank approved a 25-year loan to modernise the railway network across Nigeria." }
+  ];
+  const latestData = [
+    { title: "Afreximbank issues $2B infrastructure bond", time: "1h ago", category: "Capital", content: "The bond was oversubscribed 3x, signaling strong investor confidence in African infrastructure." },
+    { title: "Senegal becomes regional gas hub", time: "2h ago", category: "Infrastructure", content: "New offshore gas fields are expected to supply power to six West African countries by 2027." },
+    { title: "Nigerian football star joins Real Madrid", time: "3h ago", category: "Sports", content: "The €60 million transfer sets a record for an African player." },
+    { title: "Burna Boy wins Grammy for African dance", time: "4h ago", category: "Culture", content: "His album 'Love, Damini' took home Best Global Music Album." },
+    { title: "US-Africa trade summit agenda released", time: "5h ago", category: "Global", content: "Topics include digital trade, climate finance, and supply chain resilience." },
+    { title: "CBN holds interest rate at 18.75%", time: "6h ago", category: "Capital", content: "The central bank maintained rates to curb inflation while supporting growth." },
+    { title: "Google launches AI lab in Nairobi", time: "7h ago", category: "Frontier", content: "The lab will research machine learning applications for agriculture and healthcare." },
+    { title: "AfCFTA digital payments system goes live", time: "8h ago", category: "Capital", content: "Cross-border transactions now settle in minutes instead of days." },
+    { title: "Egypt launches green hydrogen plant", time: "9h ago", category: "Infrastructure", content: "The $4 billion facility will produce 1 million tons of green hydrogen annually." },
+    { title: "Diaspora voting rights extended in Ghana", time: "10h ago", category: "Power", content: "Ghanaians abroad can now vote in presidential elections starting 2028." }
+  ];
+  const videos = [
+    { title: "Market wrap: Capital movers", duration: "1:20", category: "Capital" },
+    { title: "Frontier tech: African unicorns", duration: "2:15", category: "Frontier" },
+    { title: "Infrastructure week: key projects", duration: "1:45", category: "Infrastructure" }
+  ];
+
+  function renderPower() {
+    const html = powerArticles.map(a => `<div class="card"><div class="story-cat">${a.category}</div><div class="story-title">${a.title}</div><div class="story-desc">${a.summary}</div><div class="read-time">📖 ${generateReadTime(a.content)}</div></div>`).join('');
+    document.getElementById("powerStoriesGrid").innerHTML = html;
+  }
+  function renderIntelFeed() {
+    const html = intelArticles.map(a => `<div class="card"><div class="story-cat">${a.category}</div><div class="story-title">${a.title}</div><div class="story-desc">${a.summary}</div><div class="read-time">📖 ${generateReadTime(a.content)}</div></div>`).join('');
+    document.getElementById("intelFeedGrid").innerHTML = html;
+  }
+  function renderIntelligence() {
+    document.getElementById("intelligenceStrip").innerHTML = `
+      <div class="card"><h3 style="color:#D4AF37; margin-bottom:12px;">💡 WHAT THIS MEANS</h3><p>Africa’s economic fundamentals strengthen as capital flows into infrastructure and frontier tech.</p><div class="read-time">📖 3 min read</div></div>
+      <div class="card"><h3 style="color:#D4AF37; margin-bottom:12px;">📈 TREND SIGNALS</h3><ul style="margin-left:20px;"><li>Capital markets liquidity up 22%</li><li>Infrastructure debt rises</li><li>Startup exits accelerate</li></ul><div class="read-time">📖 2 min read</div></div>
+      <div class="card"><h3 style="color:#D4AF37; margin-bottom:12px;">⚠️ RISK INDICATORS</h3><ul style="margin-left:20px;"><li>Currency volatility in key markets</li><li>Global rates impact local borrowing</li><li>Geopolitical trade fragmentation</li></ul><div class="read-time">📖 2 min read</div></div>`;
+  }
+  function renderLatest() {
+    const left = latestData.slice(0,5);
+    const right = latestData.slice(5,10);
+    const renderItem = (item) => `<li><span><strong>${item.title}</strong><br><span class="read-time" style="margin-top:4px; display:block;">📖 ${generateReadTime(item.content)}</span></span><span style="color:#6C7A8A;">${item.time}</span></li>`;
+    document.getElementById("latestLeftList").innerHTML = left.map(renderItem).join('');
+    document.getElementById("latestRightList").innerHTML = right.map(renderItem).join('');
+  }
+  function renderVideos() {
+    const html = videos.map(v => `<div class="video-card"><div class="video-thumb"><div class="play-btn">▶</div></div><div class="video-title" style="padding:12px;">${v.title} · ${v.duration}</div><div class="read-time" style="padding:0 12px 12px;">📖 2 min read</div></div>`).join('');
+    document.getElementById("videosGrid").innerHTML = html;
+  }
+
+  // Modal logic
+  const modal = document.getElementById("nominateModal");
+  document.getElementById("openNominateModalBtn").onclick = () => modal.style.display = "flex";
+  document.getElementById("closeModalBtn").onclick = () => modal.style.display = "none";
+  window.onclick = (e) => { if(e.target == modal) modal.style.display = "none"; };
+  document.getElementById("modalSubmitBtn").onclick = () => {
+    const name = document.getElementById("nomFullName").value.trim();
+    const region = document.getElementById("nomRegion").value.trim();
+    const impact = document.getElementById("nomImpact").value.trim();
+    if(!name || !region || !impact) { alert("Please fill Full Name, Country/Region, and Why they matter."); return; }
+    document.getElementById("modalSuccess").style.display = "block";
+    setTimeout(() => { modal.style.display = "none"; document.getElementById("modalSuccess").style.display = "none"; }, 2000);
+  };
+  // Subscribe
+  document.getElementById("subscribeBriefingBtn").onclick = () => {
+    const email = document.getElementById("subEmail").value.trim();
+    if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert("Please enter a valid email."); return; }
+    document.getElementById("subSuccessMsg").style.display = "block";
+    setTimeout(() => document.getElementById("subSuccessMsg").style.display = "none", 3000);
+  };
+  // Aux buttons
+  document.getElementById("signInBtn").onclick = () => alert("Sign in to personalize your intelligence feed.");
+  document.getElementById("viewAllSignals").onclick = () => alert("Full signals page coming soon.");
+  document.getElementById("loadMoreLatest").onclick = () => alert("Archives load more stories – full archive system under construction.");
+  ["powerMoreLink","intelMoreLink","intelligenceMoreLink","latestArchiveLink","videosMoreLink"].forEach(id => {
+    let el = document.getElementById(id);
+    if(el) el.onclick = () => alert("Category archive page – more intelligence stories will appear here.");
+  });
+
+  // Heartbeat example (commented – activate when article pages exist)
+  /*
+  let articleId = 123; // dynamic from URL
+  setInterval(() => {
+    fetch('/api/heartbeat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ articleId, seconds: 10 })
+    }).catch(e => console.log(e));
+  }, 10000);
+  */
+
+  fetchSignals(); renderMarket(); renderPower(); renderIntelFeed(); renderIntelligence(); renderLatest(); renderVideos();
+  setInterval(fetchSignals, 75000);
+</script>
+</body>
+</html>
