@@ -8,103 +8,149 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #0B0F14; font-family: 'Inter', sans-serif; color: #FFFFFF; line-height: 1.5; scroll-behavior: smooth; }
-    .container { max-width: 1440px; margin: 0 auto; padding: 0 32px; }
+    .container { max-width: 1440px; margin: 0 auto; padding: 0 40px; }
 
     /* HEADER */
     header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
-      background: rgba(11,15,20,0.95); backdrop-filter: blur(8px);
-      position: sticky; top: 0; z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(8px);
+      background: rgba(11, 15, 20, 0.85);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    .logo { font-size: 26px; font-weight: 800; background: linear-gradient(135deg, #D4AF37, #F5E6A3); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .logo-tagline { font-size: 0.65rem; letter-spacing: 1px; color: #A0A8B5; }
-    .nav-links { display: flex; gap: 24px; flex-wrap: wrap; }
-    .nav-links a { color: #C0C8D4; text-decoration: none; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: #D4AF37; }
-    .signin-btn { padding: 6px 18px; border-radius: 32px; font-size: 0.8rem; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.4); color: #D4AF37; cursor: pointer; }
+    .logo-area { display: flex; align-items: center; gap: 48px; }
+    .logo-wrapper { display: flex; flex-direction: column; line-height: 1.2; }
+    .logo { font-size: 28px; font-weight: 800; background: linear-gradient(135deg, #D4AF37 0%, #F5E6A3 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .logo-tagline { font-size: 0.65rem; letter-spacing: 1px; color: #A0A8B5; margin-top: 2px; }
+    .nav-links { display: flex; gap: 24px; align-items: center; flex-wrap: nowrap; }
+    .nav-links a { color: #C0C8D4; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: 0.2s; cursor: pointer; }
+    .nav-links a:hover { color: #D4AF37; }
+    .search-icon { font-size: 1.2rem; cursor: pointer; margin-left: 8px; color: #C0C8D4; }
+    .signin-btn { padding: 6px 18px; border-radius: 32px; font-size: 0.8rem; font-weight: 600; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.4); color: #D4AF37; cursor: pointer; }
 
-    /* HERO */
-    .hero-section { margin: 32px 0 40px; }
-    .hero-card { background: linear-gradient(145deg, #121821, #0E131C); border-radius: 24px; padding: 32px; border: 1px solid rgba(212,175,55,0.2); }
-    .hero-card h1 { font-size: 2.2rem; margin-bottom: 16px; }
-    .hero-card p { color: #A0A8B5; max-width: 70%; margin-bottom: 24px; }
-    .btn { background: #D4AF37; color: #0B0F14; border: none; padding: 10px 24px; border-radius: 40px; font-weight: 700; cursor: pointer; }
-
-    /* LIVE SIGNALS */
-    .section-title { font-size: 1.25rem; font-weight: 700; border-left: 4px solid #D4AF37; padding-left: 14px; margin: 40px 0 20px; }
-    .signals-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-    .signal-card { background: #121821; border-radius: 16px; padding: 16px; border-left: 3px solid; cursor: pointer; transition: 0.2s; }
-    .signal-card.Frontier { border-left-color: #00E676; }
-    .signal-card.Capital { border-left-color: #2196F3; }
-    .signal-card.Power { border-left-color: #FF3D00; }
-    .signal-card.Infrastructure { border-left-color: #FFC107; }
-    .signal-card.Sports { border-left-color: #9C27B0; }
-    .signal-card.Culture { border-left-color: #FF4081; }
-    .signal-card.Global { border-left-color: #607D8B; }
-    .signal-headline { font-weight: 600; margin-bottom: 8px; }
-    .signal-meta { display: flex; justify-content: space-between; font-size: 0.7rem; color: #6C7A8A; }
-    .live-dot { display: inline-block; width: 8px; height: 8px; background: #00E676; border-radius: 50%; margin-right: 6px; animation: pulse 1.2s infinite; }
+    /* HERO 70/30 */
+    .hero-grid { display: flex; gap: 24px; margin: 40px 0 32px; align-items: stretch; }
+    .hero-main { flex: 2.2; background: linear-gradient(145deg, #121821, #0E131C); border-radius: 24px; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.3; z-index: 0; }
+    .hero-content { position: relative; z-index: 1; padding: 32px; }
+    .hero-tag { color: #D4AF37; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+    .hero-main h1 { font-size: 2rem; margin-bottom: 16px; max-width: 80%; }
+    .hero-main p { color: #A0A8B5; max-width: 70%; margin-bottom: 24px; }
+    .hero-meta { display: flex; gap: 20px; margin: 16px 0; font-size: 0.85rem; }
+    .btn-sky { background: linear-gradient(95deg, #1E6BFF, #3A8DFF); border: none; padding: 10px 24px; border-radius: 40px; color: white; font-weight: 700; cursor: pointer; width: auto; }
+    .hero-signals { flex: 1; background: #0D121A; padding: 24px; border-radius: 24px; border-left: 3px solid #D4AF37; display: flex; flex-direction: column; }
+    .hero-signals h3 { font-size: 1rem; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .live-dot { display: inline-block; width: 8px; height: 8px; background: #00E676; border-radius: 50%; animation: pulse 1.2s infinite; }
     @keyframes pulse { 0% { opacity: 0.4; } 100% { opacity: 1; } }
+    .signal-item { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; cursor: pointer; transition: 0.2s; }
+    .signal-item:hover { background: rgba(255,255,255,0.03); padding-left: 4px; }
+    .signal-cat { font-size: 0.65rem; text-transform: uppercase; color: #D4AF37; margin-left: 8px; }
+    .view-all { text-align: right; margin-top: 16px; color: #D4AF37; cursor: pointer; font-size: 0.8rem; }
 
-    /* MARKET 2-ROW */
-    .market-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; background: #0E131C; border-radius: 20px; padding: 20px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.05); }
-    .market-item { text-align: left; }
+    /* MARKET SNAPSHOT - 2 ROWS */
+    .market-section { margin: 32px 0; }
+    .market-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; background: #0E131C; border-radius: 20px; padding: 20px 24px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.05); }
+    .market-item { min-width: 0; }
     .market-title { font-size: 0.75rem; color: #A0A8B5; margin-bottom: 4px; }
     .market-value { font-weight: 700; font-size: 1.1rem; }
-    .market-change { font-size: 0.75rem; }
+    .market-change { font-size: 0.7rem; }
     .positive { color: #00C853; }
     .negative { color: #FF3D00; }
     .intel-tag { font-size: 0.65rem; color: #D4AF37; opacity: 0; transition: 0.2s; margin-top: 4px; }
     .market-item:hover .intel-tag { opacity: 1; }
 
-    /* CATEGORY STREAMS – balanced */
+    /* POWER STORIES (3 cards) */
+    .section-header { display: flex; justify-content: space-between; align-items: baseline; margin: 48px 0 20px 0; }
+    .section-header h2 { font-size: 1.3rem; font-weight: 700; border-left: 4px solid #D4AF37; padding-left: 14px; text-transform: uppercase; }
+    .section-header a { color: #A0A8B5; font-size: 0.8rem; cursor: pointer; transition: 0.2s; text-decoration: none; }
+    .section-header a:hover { color: #D4AF37; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+    /* INTELLIGENCE FEED - single row (flex wrap) */
+    .feed-row { display: flex; flex-wrap: wrap; gap: 24px; margin-bottom: 40px; }
+    .feed-card { flex: 1 1 280px; background: #121821; border-radius: 20px; padding: 20px; cursor: pointer; transition: 0.2s; }
+    .feed-card:hover { background: #1A212C; }
+    .feed-title { font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+    .feed-excerpt { font-size: 0.8rem; color: #A0A8B5; margin-bottom: 12px; }
+    .read-time { font-size: 0.7rem; color: #6C7A8A; display: inline-block; }
+
+    /* CATEGORY STREAMS (6 sections) */
     .category-stream { margin-bottom: 48px; }
     .stream-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px; }
-    .stream-header h3 { font-size: 1.3rem; font-weight: 700; }
+    .stream-header h3 { font-size: 1.2rem; font-weight: 700; }
     .stream-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
     .story-card { background: #121821; border-radius: 20px; padding: 20px; cursor: pointer; transition: 0.2s; }
-    .story-category { font-size: 0.7rem; text-transform: uppercase; font-weight: 600; margin-bottom: 8px; }
-    .story-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 10px; }
-    .story-excerpt { font-size: 0.85rem; color: #A0A8B5; margin-bottom: 12px; }
-    .read-time { font-size: 0.7rem; color: #6C7A8A; }
+    .story-card:hover { background: #1A212C; }
+    .story-title { font-weight: 700; font-size: 1rem; margin-bottom: 10px; }
+    .story-excerpt { font-size: 0.8rem; color: #A0A8B5; margin-bottom: 12px; }
 
-    /* DAILY BRIEFING – weighted by story geography */
-    .briefing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
-    .briefing-card { background: #0E131C; border-radius: 20px; padding: 20px; border-top: 3px solid #D4AF37; }
-    .briefing-badge { font-size: 0.7rem; text-transform: uppercase; font-weight: 700; margin-bottom: 12px; }
-    .weight-note { font-size: 0.7rem; color: #A0A8B5; margin: -10px 0 20px 30px; }
+    /* AFRICAN INTELLIGENCE - 3 cards */
+    .intel-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 40px 0; }
+    .intel-card { background: #121821; border-radius: 20px; padding: 24px; }
+    .intel-card h4 { color: #D4AF37; margin-bottom: 12px; font-size: 1rem; }
+    .intel-card p, .intel-card li { font-size: 0.85rem; color: #C0C8D4; }
+    .intel-card ul { margin-left: 20px; margin-top: 8px; }
 
-    /* TRENDS & RISKS */
-    .trends-risks { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 40px 0; }
-    .panel { background: #0E131C; border-radius: 24px; padding: 24px; }
-    .trend-item, .risk-item { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    /* LATEST STORIES (two columns) */
+    .two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .latest-list { background: #0E131C; border-radius: 20px; list-style: none; padding: 0; }
+    .latest-list li { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer; }
+    .latest-list li strong { font-size: 0.9rem; }
+    .time-ago { font-size: 0.7rem; color: #6C7A8A; white-space: nowrap; margin-left: 12px; }
+    .load-more { text-align: center; padding: 16px; color: #D4AF37; font-weight: 600; cursor: pointer; margin-top: 20px; }
 
-    /* LATEST STORIES */
-    .latest-list { list-style: none; }
-    .latest-list li { display: flex; justify-content: space-between; padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer; }
-    .load-more { text-align: center; padding: 16px; color: #D4AF37; font-weight: 600; cursor: pointer; }
+    /* SHORT VIDEOS */
+    .videos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 40px 0; }
+    .video-card { background: #0D121A; border-radius: 20px; overflow: hidden; cursor: pointer; }
+    .video-thumb { height: 140px; background: linear-gradient(145deg, #1A2533, #10161F); display: flex; align-items: center; justify-content: center; }
+    .play-btn { background: #D4AF37; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
 
-    /* SLIDE PANEL */
-    .slide-panel { position: fixed; top: 0; right: -500px; width: 500px; height: 100%; background: #0E131C; box-shadow: -5px 0 25px rgba(0,0,0,0.5); z-index: 1000; transition: right 0.3s ease; padding: 32px; overflow-y: auto; border-left: 1px solid #D4AF37; }
-    .slide-panel.open { right: 0; }
-    .close-panel { background: none; border: none; color: #A0A8B5; font-size: 1.5rem; float: right; cursor: pointer; }
+    /* PREMIUM DUAL CARDS */
+    .premium-dual { display: flex; gap: 32px; margin: 60px 0 40px; align-items: stretch; }
+    .compact-card { flex: 1; background: #121821; border-radius: 28px; border: 1px solid rgba(212,175,55,0.2); display: flex; flex-direction: column; }
+    .card-header { padding: 24px 28px 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .card-header h3 { font-size: 1.3rem; font-weight: 700; background: linear-gradient(135deg, #D4AF37, #F5E6A3); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .card-body { padding: 20px 28px 28px; flex: 1; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; color: #D4AF37; margin-bottom: 6px; }
+    .form-group input { width: 100%; background: #0B0F14; border: 1px solid #2A3342; border-radius: 12px; padding: 10px 14px; color: white; }
+    .subscribe-note { font-size: 0.7rem; color: #A0A8B5; margin: 12px 0; display: flex; gap: 8px; flex-wrap: wrap; }
 
-    footer { margin-top: 60px; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
+    /* MODAL */
+    .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 1000; }
+    .modal-content { background: #121821; max-width: 600px; width:90%; max-height: 85vh; overflow-y: auto; padding: 32px; border-radius: 28px; border: 1px solid #D4AF37; }
+    .close-modal { background: none; border: none; color: #A0A8B5; float: right; font-size: 1.5rem; cursor: pointer; }
+
+    /* FOOTER */
+    footer { margin-top: 40px; padding: 40px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1.2fr; gap: 30px; }
+    .social-icons { display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap; }
+    .social-icons svg { width: 22px; height: 22px; fill: #A0A8B5; transition: 0.2s; cursor: pointer; }
 
     @media (max-width: 1000px) {
       .container { padding: 0 20px; }
-      .market-row { grid-template-columns: repeat(3, 1fr); }
-      .stream-grid, .briefing-grid, .trends-risks { grid-template-columns: 1fr; }
-      .slide-panel { width: 100%; right: -100%; }
+      .hero-grid, .premium-dual, .footer-grid { flex-direction: column; }
+      .market-row, .grid-3, .stream-grid, .intel-strip, .videos-grid, .two-col-grid { grid-template-columns: 1fr; }
+      .feed-row { flex-direction: column; }
+      .hero-main h1 { font-size: 1.5rem; max-width: 100%; }
     }
   </style>
 </head>
 <body>
 <div class="container">
+
+  <!-- HEADER -->
   <header>
-    <div style="display: flex; align-items: center; gap: 48px;">
-      <div><div class="logo">AFRIQAI</div><div class="logo-tagline">Africa, Decoded.</div></div>
+    <div class="logo-area">
+      <div class="logo-wrapper">
+        <div class="logo">AFRIQAI</div>
+        <div class="logo-tagline">Africa, Decoded.</div>
+      </div>
       <div class="nav-links">
         <a class="nav-link" data-category="all">Home</a>
         <a class="nav-link" data-category="Signals">Signals</a>
@@ -115,120 +161,207 @@
         <a class="nav-link" data-category="Sports">Sports</a>
         <a class="nav-link" data-category="Culture">Culture</a>
         <a class="nav-link" data-category="Global">Global</a>
+        <span class="search-icon" id="searchIcon">🔍</span>
       </div>
     </div>
     <button class="signin-btn" id="signInBtn">Sign In</button>
   </header>
 
-  <div class="hero-section" id="heroContainer"></div>
-
-  <!-- Live Signals -->
-  <div class="section-title"><span class="live-dot"></span> LIVE SIGNALS</div>
-  <div class="signals-grid" id="signalsGrid"></div>
-
-  <!-- Market Snapshot -->
-  <div class="section-title" style="margin-top: 48px;">MARKET PULSE</div>
-  <div id="marketRow1" class="market-row"></div>
-  <div id="marketRow2" class="market-row"></div>
-
-  <!-- DAILY BRIEFING – weighted by story geography, not by source -->
-  <div class="section-title">📋 DAILY INTELLIGENCE BRIEFING</div>
-  <div class="weight-note">
-    🔹 <strong>40% Nigeria</strong> – stories <em>about Nigeria</em> (from Nigerian or global media)<br>
-    🔹 <strong>30% Africa</strong> – stories <em>about the rest of Africa</em><br>
-    🔹 <strong>30% Global</strong> – global stories with clear impact on Nigeria/Africa
+  <!-- HERO + LIVE SIGNALS (70/30) -->
+  <div class="hero-grid">
+    <div class="hero-main">
+      <img class="hero-bg" src="https://placehold.co/800x500/1A2A3A/FFFFFF?text=AfriQAI+Hero" alt="hero background">
+      <div class="hero-content">
+        <div class="hero-tag">🔴 FRONTIER SERIES — THE AFRICAN EDGE</div>
+        <h1 id="heroTitle">Africa’s AI Revolution: Startups, Talent & the Next $100B Opportunity</h1>
+        <p id="heroExcerpt">From fintech to agriculture, a new generation of innovators is solving real problems at scale.</p>
+        <div class="hero-meta"><span>📘 <span id="heroReadTime">12</span> min read</span><span>💡 Frontier</span></div>
+        <button class="btn-sky" id="readFullBriefing">Read Full Briefing →</button>
+      </div>
+    </div>
+    <div class="hero-signals">
+      <h3><span class="live-dot"></span> LIVE SIGNALS</h3>
+      <div id="liveSignalsList" style="flex:1;"></div>
+      <div class="view-all" id="viewAllSignals">View All Signals →</div>
+    </div>
   </div>
-  <div class="briefing-grid" id="briefingGrid"></div>
 
-  <!-- Category Streams (balanced) -->
+  <!-- MARKET SNAPSHOT (2 rows) -->
+  <div class="market-section">
+    <div style="font-size:12px; color:#A0A8B5; margin-bottom:12px;">MARKET SNAPSHOT</div>
+    <div id="marketRow1" class="market-row"></div>
+    <div id="marketRow2" class="market-row"></div>
+  </div>
+
+  <!-- POWER STORIES (Top 3 trending) -->
+  <div class="section-header"><h2>POWER STORIES</h2><a id="powerMoreLink">View All Power Stories →</a></div>
+  <div class="grid-3" id="powerStoriesGrid"></div>
+
+  <!-- INTELLIGENCE FEED (single row, 3-6 cards) -->
+  <div class="section-header"><h2>INTELLIGENCE FEED</h2><a id="intelMoreLink">View More →</a></div>
+  <div class="feed-row" id="intelligenceFeed"></div>
+
+  <!-- CATEGORY STREAMS (6 sections) -->
   <div id="frontierStream" class="category-stream"></div>
   <div id="capitalStream" class="category-stream"></div>
   <div id="powerStream" class="category-stream"></div>
-  <div id="infraStream" class="category-stream"></div>
   <div id="sportsStream" class="category-stream"></div>
   <div id="cultureStream" class="category-stream"></div>
   <div id="globalStream" class="category-stream"></div>
 
-  <!-- Trends & Risks -->
-  <div class="trends-risks" id="trendsRisksPanel"></div>
+  <!-- AFRICAN INTELLIGENCE (3 cards) -->
+  <div class="section-header"><h2>AFRICAN INTELLIGENCE</h2><a id="intelligenceMoreLink">View All →</a></div>
+  <div class="intel-strip" id="intelligenceStrip"></div>
 
-  <!-- Latest Stories -->
-  <div class="section-title">LATEST INTELLIGENCE</div>
-  <ul class="latest-list" id="latestList"></ul>
-  <div class="load-more" id="loadMoreBtn">LOAD MORE STORIES ↓</div>
+  <!-- LATEST STORIES (10 items, two columns) -->
+  <div class="section-header"><h2>LATEST STORIES</h2><a id="latestArchiveLink">View All Latest Stories →</a></div>
+  <div class="two-col-grid">
+    <ul class="latest-list" id="latestLeftList"></ul>
+    <ul class="latest-list" id="latestRightList"></ul>
+  </div>
+  <div class="load-more" id="loadMoreLatest">LOAD MORE STORIES ↓</div>
 
-  <footer>© AfriQAI 2026 — Africa's Intelligence Infrastructure | <span style="cursor:pointer;">Contact</span> · <span style="cursor:pointer;">Privacy</span></footer>
+  <!-- SHORT VIDEOS -->
+  <div class="section-header"><h2>SHORT VIDEOS</h2><a id="videosMoreLink">View All Short Videos →</a></div>
+  <div class="videos-grid" id="videosGrid"></div>
+
+  <!-- PREMIUM DUAL CARDS -->
+  <div class="premium-dual">
+    <div class="compact-card">
+      <div class="card-header"><h3>Nominate the individuals shaping Africa’s next global story.</h3></div>
+      <div class="card-body">
+        <div class="nominate-teaser" id="openNominateModalBtn" style="cursor:pointer;">
+          <p>✨ Submit profiles of leaders, innovators, and cultural forces redefining Africa’s influence across the world.</p>
+          <p style="margin-top: 12px; color: #1E6BFF; font-weight: 500;">Click to open nomination form →</p>
+        </div>
+      </div>
+    </div>
+    <div class="compact-card">
+      <div class="card-header"><h3>SUBSCRIBE TO INTELLIGENCE</h3></div>
+      <div class="card-body">
+        <div class="form-group"><label>Email Address</label><input type="email" id="subEmail" placeholder="your@email.com"></div>
+        <div class="subscribe-note"><span>🔒</span> You can unsubscribe anytime. <span>📬</span> We deliver clarity — once a day, at intelligence level.</div>
+        <button class="btn-sky" id="subscribeBriefingBtn">Activate Briefings →</button>
+        <div id="subSuccessMsg" style="display:none; margin-top:16px; background:#0B2E1A; padding:12px; border-radius:12px; text-align:center;">✅ You’re in. Your first briefing arrives shortly.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-logo">
+        <div class="logo" style="font-size:24px;">AFRIQAI</div>
+        <div class="logo-tagline" style="margin-top:4px;">Africa, Decoded.</div>
+        <div class="social-icons">
+          <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9v-7h-2.6v-2.9h2.6V9.7c0-2.6 1.5-4 3.9-4 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.3 0-1.7.8-1.7 1.6v1.9h2.9l-.5 2.9h-2.4v7A10 10 0 0022 12"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l8-9-7-11h6l4 6z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3 .1 4.4 1.6 4.5 4.5.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3-1.6 4.4-4.5 4.5-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3-.1-4.4-1.6-4.5-4.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-3 1.6-4.4 4.5-4.5C8.4 2.2 8.8 2.2 12 2.2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2h3a5 5 0 005 5v3a8 8 0 01-5-2v7a6 6 0 11-6-6 6 6 0 012 0v3a3 3 0 10-2 2.8V2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M4 3a2 2 0 110 4 2 2 0 010-4zm0 5h4v13H4V8zm7 0h3v2h.1c.4-.7 1.4-2 3-2 3.2 0 3.9 2.1 3.9 4.8V21h-4v-6.4c0-1.5 0-3.4-2-3.4s-2.3 1.6-2.3 3.3V21h-4V8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M20 3.5A11.8 11.8 0 0012.2 0C5.6 0 .2 5.4.2 12c0 2.1.6 4.2 1.7 6L0 24l6.2-1.6a11.9 11.9 0 005.9 1.5c6.6 0 12-5.4 12-12 0-3.2-1.2-6.1-3.4-8.4z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M23 7s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C17.4 3 12 3 12 3h0s-5.4 0-8.1.6c-.4.1-1.3.1-2.1 1C1.2 5.3 1 7 1 7S1 8.7 1 10.4v1.2C1 13.3 1 15 1 15s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1C6.6 19 12 19 12 19s5.4 0 8.1-.6c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.4.8-2.4s0-1.7 0-3.4v-1.2C23 8.7 23 7 23 7z"/></svg>
+        </div>
+      </div>
+      <div><h4>Company</h4><p>About</p><p>Careers</p><p>Advertise</p><p>Contact</p></div>
+      <div><h4>Products</h4><p>Reports</p><p>Intelligence Dashboard</p><p>Mobile App</p><p>API Access</p></div>
+      <div><h4>Legal</h4><p>Terms of Use</p><p>Privacy Policy</p><p>Cookie Policy</p><p>Disclaimer</p></div>
+      <div><h4>Get in Touch</h4><p>info@afriqai.co</p><p>Lagos, Nigeria</p><p>© AfriQAI 2026. All rights reserved.</p></div>
+    </div>
+  </footer>
 </div>
 
-<!-- Slide Panel -->
-<div id="slidePanel" class="slide-panel">
-  <button class="close-panel" id="closePanelBtn">✕</button>
-  <div id="panelContent"><h2>Intelligence Briefing</h2><p>Loading...</p></div>
+<!-- Nomination Modal -->
+<div id="nominateModal" class="modal">
+  <div class="modal-content">
+    <button class="close-modal" id="closeModalBtn">&times;</button>
+    <h3>Nominate an African leader</h3>
+    <p style="margin-bottom:20px;">Who should the world be paying attention to?</p>
+    <div class="form-group"><label>Full Name</label><input type="text" id="nomFullName" placeholder="Enter full legal or known name"></div>
+    <div class="form-group"><label>Country or Region</label><input type="text" id="nomRegion" placeholder="e.g. Nigeria, Kenya, Diaspora (UK/US)"></div>
+    <div class="form-group"><label>Area of Influence</label><select id="nomInfluence"><option>Technology & Innovation</option><option>Politics & Governance</option><option>Finance & Markets</option><option>Energy & Infrastructure</option><option>Culture & Entertainment</option><option>Science & Research</option><option>Sports & Global Influence</option></select></div>
+    <div class="form-group"><label>Why should the world pay attention?</label><textarea id="nomImpact" rows="3" placeholder="Focus on achievements, influence, and measurable change — not biography."></textarea></div>
+    <div class="form-group"><label>Supporting Evidence (Optional)</label><input type="text" id="nomLinks" placeholder="Articles, profiles, reports, or social links"></div>
+    <button class="btn-sky" id="modalSubmitBtn">Submit Nomination →</button>
+    <div class="trust-note" style="margin-top:20px;">All submissions are subject to editorial verification and intelligence review before publication.</div>
+    <div id="modalSuccess" style="display:none; margin-top:16px; background:#0B2E1A; padding:12px; border-radius:12px; text-align:center;">✅ Nomination received. Our team will review.</div>
+  </div>
 </div>
 
 <script>
+  // ---------- CONFIG ----------
   const BACKEND_URL = 'https://afriqai-backend.onrender.com'; // change to your live backend
   let latestOffset = 0;
   const LATEST_LIMIT = 10;
   let allStoriesCache = [];
 
+  // Helper: fetch or mock
   async function fetchJSON(url, mockData) {
     try {
       const res = await fetch(url);
       if (!res.ok) throw new Error();
       return await res.json();
     } catch (err) {
-      console.warn(`Fallback mock for ${url}`);
+      console.warn(`Mock fallback for ${url}`);
       return mockData;
     }
   }
 
-  // Hero
+  // ---------- HERO (existing endpoint) ----------
   async function loadHero() {
-    const hero = await fetchJSON(`${BACKEND_URL}/api/hero`, { title: "Africa’s AI Revolution: Startups, Talent & the Next $100B Opportunity", excerpt: "From fintech to agriculture, a new generation of innovators is solving real problems at scale." });
-    document.getElementById('heroContainer').innerHTML = `
-      <div class="hero-card">
-        <h1>${hero.title}</h1>
-        <p>${hero.excerpt || hero.summary || ''}</p>
-        <button class="btn" onclick="openSlidePanel('hero', '${hero.title.replace(/'/g, "\\'")}', '${(hero.excerpt || '').replace(/'/g, "\\'")}')">Read Briefing →</button>
-      </div>
-    `;
+    const hero = await fetchJSON(`${BACKEND_URL}/api/hero`, {
+      title: "Africa’s AI Revolution: Startups, Talent & the Next $100B Opportunity",
+      excerpt: "From fintech to agriculture, a new generation of innovators is solving real problems at scale.",
+      readTime: 12,
+      category: "Frontier"
+    });
+    document.getElementById('heroTitle').innerText = hero.title;
+    document.getElementById('heroExcerpt').innerText = hero.excerpt || hero.summary || '';
+    document.getElementById('heroReadTime').innerText = hero.readTime || 12;
   }
 
-  // Live Signals (top 10, rolling)
-  let liveSignals = [];
+  // ---------- LIVE SIGNALS (headlines only, with minutes ago) ----------
   async function fetchLiveSignals() {
-    const mock = [
-      { id:"s1", headline:"Dangote Refinery boosts output by 25%", category:"Capital", impact:"Oil & FX pressure to ease", timestamp:new Date().toISOString(), importance:92 },
-      { id:"s2", headline:"Google opens $1B AI hub in Nairobi", category:"Frontier", impact:"Regional startup funding to rise", timestamp:new Date().toISOString(), importance:88 },
-      { id:"s3", headline:"AfCFTA digital protocol goes live", category:"Infrastructure", impact:"Intra-African trade +15%", timestamp:new Date().toISOString(), importance:85 },
-      { id:"s4", headline:"Nigeria inflation hits 28.9%", category:"Capital", impact:"CBN rate hike expected", timestamp:new Date().toISOString(), importance:94 },
-      { id:"s5", headline:"Senegal becomes regional gas hub", category:"Infrastructure", impact:"Energy security for West Africa", timestamp:new Date().toISOString(), importance:80 },
-      { id:"s6", headline:"Burna Boy's global tour boosts streaming by 34%", category:"Culture", impact:"Cultural export valuation rises", timestamp:new Date().toISOString(), importance:72 },
-      { id:"s7", headline:"Flutterwave plans Lagos IPO", category:"Frontier", impact:"Capital markets deepen", timestamp:new Date().toISOString(), importance:89 },
-      { id:"s8", headline:"US-Africa summit commits $55B to digital infrastructure", category:"Global", impact:"Geopolitical alignment shift", timestamp:new Date().toISOString(), importance:77 },
-      { id:"s9", headline:"Egypt secures IMF extended fund facility", category:"Capital", impact:"Currency stability expected", timestamp:new Date().toISOString(), importance:83 },
-      { id:"s10", headline:"African Super League launches $100M prize pool", category:"Sports", impact:"Sports economy transformation", timestamp:new Date().toISOString(), importance:75 }
+    const mockSignals = [
+      { headline: "Dangote Refinery boosts output by 25%", category: "Capital", minutesAgo: 2, importance: 92 },
+      { headline: "Google opens $1B AI hub in Nairobi", category: "Frontier", minutesAgo: 7, importance: 88 },
+      { headline: "Nigeria inflation hits 28.9%", category: "Capital", minutesAgo: 15, importance: 94 },
+      { headline: "AfCFTA digital protocol goes live", category: "Infrastructure", minutesAgo: 25, importance: 85 },
+      { headline: "Senegal becomes regional gas hub", category: "Infrastructure", minutesAgo: 40, importance: 80 },
+      { headline: "Flutterwave plans Lagos IPO", category: "Frontier", minutesAgo: 55, importance: 89 },
+      { headline: "US-Africa summit commits $55B to digital infrastructure", category: "Global", minutesAgo: 70, importance: 77 },
+      { headline: "Egypt secures IMF extended fund facility", category: "Capital", minutesAgo: 90, importance: 83 }
     ];
-    const data = await fetchJSON(`${BACKEND_URL}/api/signals/live`, mock);
-    liveSignals = data.sort((a,b)=>b.importance-a.importance).slice(0,10);
-    document.getElementById('signalsGrid').innerHTML = liveSignals.map(s => `
-      <div class="signal-card ${s.category}" onclick="openSlidePanel('signal','${s.headline.replace(/'/g,"\\'")}','Impact: ${s.impact}<br>Full intelligence in briefing.')">
-        <div class="signal-headline">${s.headline}</div>
-        <div class="signal-meta"><span><span class="live-dot"></span> ${s.category}</span><span>${new Date(s.timestamp).toLocaleTimeString()}</span></div>
+    const signals = await fetchJSON(`${BACKEND_URL}/api/signals/live`, mockSignals);
+    const container = document.getElementById('liveSignalsList');
+    container.innerHTML = signals.slice(0,8).map(s => `
+      <div class="signal-item" onclick="openSlidePanel('signal', '${s.headline.replace(/'/g, "\\'")}', 'Breaking intelligence: ${s.headline}')">
+        <span><span class="live-dot"></span> ${s.headline} <span class="signal-cat">${s.category}</span></span>
+        <span>${s.minutesAgo} min ago</span>
       </div>
     `).join('');
   }
-  setInterval(fetchLiveSignals, 120000);
 
-  // Market (2 rows)
+  // ---------- MARKET (2 rows) ----------
   const mockMarket = {
-    row1: [{ title:"NGN/USD", value:"₦1,520", change:-0.8, pos:false, tag:"Inflation Pressure" },{ title:"ZAR/USD", value:"R18.45", change:0.3, pos:true, tag:"Policy Rate Pause" },{ title:"EGP/USD", value:"E£48.20", change:-0.5, pos:false, tag:"FX Shortage" },{ title:"EUR/USD", value:"1.07", change:0.2, pos:true, tag:"DXY Weakness" },{ title:"USD/CNY", value:"7.24", change:-0.1, pos:false, tag:"PBOC Intervention" }],
-    row2: [{ title:"Brent Oil", value:"$82.40", change:1.2, pos:true, tag:"OPEC+ Cuts" },{ title:"Gold", value:"$2,340", change:0.6, pos:true, tag:"Safe Haven" },{ title:"Nat Gas", value:"$2.85", change:-0.9, pos:false, tag:"Mild Winter" },{ title:"Bitcoin", value:"$64,200", change:2.5, pos:true, tag:"Risk-On" },{ title:"Ethereum", value:"$3,100", change:1.8, pos:true, tag:"Dencun Upgrade" }]
+    row1: [
+      { title:"NGN/USD", value:"₦1,520", change:-0.8, pos:false, tag:"Inflation Pressure" },
+      { title:"ZAR/USD", value:"R18.45", change:0.3, pos:true, tag:"Policy Rate Pause" },
+      { title:"EGP/USD", value:"E£48.20", change:-0.5, pos:false, tag:"FX Shortage" },
+      { title:"EUR/USD", value:"1.07", change:0.2, pos:true, tag:"DXY Weakness" },
+      { title:"USD/CNY", value:"7.24", change:-0.1, pos:false, tag:"PBOC Intervention" }
+    ],
+    row2: [
+      { title:"Brent Oil", value:"$82.40", change:1.2, pos:true, tag:"OPEC+ Cuts" },
+      { title:"Gold", value:"$2,340", change:0.6, pos:true, tag:"Safe Haven" },
+      { title:"Nat Gas", value:"$2.85", change:-0.9, pos:false, tag:"Mild Winter" },
+      { title:"Bitcoin", value:"$64,200", change:2.5, pos:true, tag:"Risk-On" },
+      { title:"Ethereum", value:"$3,100", change:1.8, pos:true, tag:"Dencun Upgrade" }
+    ]
   };
   async function loadMarket() {
     const data = await fetchJSON(`${BACKEND_URL}/api/market`, mockMarket);
-    const renderRow = (items, rowId) => {
+    function renderRow(items, rowId) {
       document.getElementById(rowId).innerHTML = items.map(m => `
         <div class="market-item">
           <div class="market-title">${m.title}</div>
@@ -237,41 +370,57 @@
           <div class="intel-tag">${m.tag||''}</div>
         </div>
       `).join('');
-    };
+    }
     renderRow(data.row1 || mockMarket.row1, 'marketRow1');
     renderRow(data.row2 || mockMarket.row2, 'marketRow2');
   }
 
-  // Daily Briefing: split by geo_focus (Nigeria/Africa/Global) – here using mock data that includes foreign sources covering Nigeria
-  async function loadBriefing() {
-    const mockBrief = {
-      nigeria: [
-        { title:"Exclusive: Nigeria's oil theft drops 40% – satellite data", excerpt:"Reuters analysis shows sharp decline in illegal bunkering following new naval patrols.", source:"Reuters (global source)" },
-        { title:"CBN holds rates at 18.75%, signals tightening if inflation persists", excerpt:"Central Bank maintains hawkish stance.", source:"Premium Times (local)" }
-      ],
-      africa: [
-        { title:"AfCFTA digital payments system goes live", excerpt:"Cross-border settlements now real-time, boosting intra-African trade.", source:"Nation Africa" },
-        { title:"South Africa's energy crisis deepens as Eskom implements stage 6 load-shedding", excerpt:"Mining and manufacturing output hit.", source:"Bloomberg" }
-      ],
-      global: [
-        { title:"US Fed signals rate cuts by Q3, boosting EM capital flows", excerpt:"Analysts expect increased portfolio investment into Nigeria and Kenya.", source:"Financial Times" },
-        { title:"EU passes AI Act – implications for African startups", excerpt:"Compliance costs may rise, but also opens EU market for certified AI products.", source:"TechCrunch" }
-      ]
-    };
-    const brief = await fetchJSON(`${BACKEND_URL}/api/briefing`, mockBrief);
-    document.getElementById('briefingGrid').innerHTML = `
-      <div class="briefing-card"><div class="briefing-badge">🇳🇬 NIGERIA (40%)</div>${brief.nigeria.map(n=>`<div class="story-card" style="margin-bottom:12px;" onclick="openSlidePanel('brief','${n.title.replace(/'/g,"\\'")}','${n.excerpt} — Source: ${n.source}')"><strong>${n.title}</strong><br><span style="font-size:0.8rem;">${n.excerpt}</span><div style="font-size:0.7rem; color:#A0A8B5; margin-top:4px;">📰 ${n.source}</div></div>`).join('')}</div>
-      <div class="briefing-card"><div class="briefing-badge">🌍 AFRICA (30%)</div>${brief.africa.map(a=>`<div class="story-card" style="margin-bottom:12px;" onclick="openSlidePanel('brief','${a.title.replace(/'/g,"\\'")}','${a.excerpt} — Source: ${a.source}')"><strong>${a.title}</strong><br><span style="font-size:0.8rem;">${a.excerpt}</span><div style="font-size:0.7rem; color:#A0A8B5; margin-top:4px;">📰 ${a.source}</div></div>`).join('')}</div>
-      <div class="briefing-card"><div class="briefing-badge">🌐 GLOBAL (30%)</div>${brief.global.map(g=>`<div class="story-card" style="margin-bottom:12px;" onclick="openSlidePanel('brief','${g.title.replace(/'/g,"\\'")}','${g.excerpt} — Source: ${g.source}')"><strong>${g.title}</strong><br><span style="font-size:0.8rem;">${g.excerpt}</span><div style="font-size:0.7rem; color:#A0A8B5; margin-top:4px;">📰 ${g.source}</div></div>`).join('')}</div>
-    `;
+  // ---------- POWER STORIES (top 3 trending, with traction) ----------
+  async function loadPowerStories() {
+    const mockPower = [
+      { title: "Pan-African summit passes unified trade protocol", category: "Power", excerpt: "Leaders from 54 nations agreed on a new trade framework.", readTime: 5, traction: 92 },
+      { title: "South Africa elections: coalition dynamics shift", category: "Power", excerpt: "Early polling suggests a multi-party coalition may form.", readTime: 4, traction: 88 },
+      { title: "Nigeria's digital economy bill signed into law", category: "Capital", excerpt: "Tax incentives for startups and a $500M digital fund.", readTime: 6, traction: 85 }
+    ];
+    const stories = await fetchJSON(`${BACKEND_URL}/api/stories?category=Power&limit=3`, mockPower);
+    const html = stories.map(s => `
+      <div class="story-card" onclick="openSlidePanel('story', '${s.title.replace(/'/g, "\\'")}', '${s.excerpt}')">
+        <div class="story-category" style="color:#D4AF37;">${s.category}</div>
+        <div class="story-title">${s.title}</div>
+        <div class="story-excerpt">${s.excerpt.substring(0,100)}...</div>
+        <div class="read-time">📖 ${s.readTime} min read · 🔥 ${s.traction}% traction</div>
+      </div>
+    `).join('');
+    document.getElementById('powerStoriesGrid').innerHTML = html;
   }
 
-  // Category Streams – all categories identical (2 cards each)
+  // ---------- INTELLIGENCE FEED (single row, no category labels) ----------
+  async function loadIntelligenceFeed() {
+    const mockFeed = [
+      { title: "World Bank Projects 3.2% Growth for Sub-Saharan Africa in 2026", excerpt: "Growth outlook improves as inflation eases across key economies.", readTime: 4 },
+      { title: "Google to Build AI Hub in Ghana, Create 3,000 Jobs", excerpt: "The hub will support startups, research, and digital skills development.", readTime: 3 },
+      { title: "Nigeria’s Agro-Exports Hit Record N1.8 Trillion in Q1 2026", excerpt: "Non-oil exports continue to drive foreign exchange earnings.", readTime: 5 },
+      { title: "CAF Champions League Final Set for Cairo Showdown", excerpt: "Al Ahly and Wydad AC prepare for historic final clash.", readTime: 2 },
+      { title: "WHO Approves First Malaria Vaccine for Widespread Use", excerpt: "Rollout begins in select African countries this quarter.", readTime: 3 },
+      { title: "US Jobs Data Beats Forecast, Markets Rally", excerpt: "Tech stocks lead gains as investors bet on soft landing.", readTime: 4 }
+    ];
+    const feed = await fetchJSON(`${BACKEND_URL}/api/intelligence-feed`, mockFeed);
+    const container = document.getElementById('intelligenceFeed');
+    container.innerHTML = feed.map(f => `
+      <div class="feed-card" onclick="openSlidePanel('feed', '${f.title.replace(/'/g, "\\'")}', '${f.excerpt}')">
+        <div class="feed-title">${f.title}</div>
+        <div class="feed-excerpt">${f.excerpt}</div>
+        <div class="read-time">📖 ${f.readTime} min read</div>
+      </div>
+    `).join('');
+  }
+
+  // ---------- CATEGORY STREAMS (6 sections, 2 cards each) ----------
   async function loadCategoryStreams() {
     const all = await fetchJSON(`${BACKEND_URL}/api/stories`, []);
     allStoriesCache = all;
-    const cats = ['Frontier','Capital','Power','Infrastructure','Sports','Culture','Global'];
-    for (let cat of cats) {
+    const categories = ['Frontier', 'Capital', 'Power', 'Sports', 'Culture', 'Global'];
+    for (let cat of categories) {
       const stories = all.filter(s => s.section === cat).slice(0,2);
       const container = document.getElementById(cat.toLowerCase() + 'Stream');
       if (!container) continue;
@@ -279,11 +428,10 @@
         <div class="stream-header"><h3 style="color:${getCatColor(cat)}">${cat.toUpperCase()} INTELLIGENCE</h3><a style="cursor:pointer;" onclick="filterCategory('${cat}')">View all →</a></div>
         <div class="stream-grid">
           ${stories.map(s => `
-            <div class="story-card" onclick="openSlidePanel('story','${s.title.replace(/'/g,"\\'")}','${(s.excerpt||'').substring(0,300).replace(/'/g,"\\'")}')">
-              <div class="story-category" style="color:${getCatColor(cat)}">${s.section}</div>
+            <div class="story-card" onclick="openSlidePanel('story', '${s.title.replace(/'/g, "\\'")}', '${(s.excerpt||'').substring(0,300)}')">
               <div class="story-title">${s.title}</div>
-              <div class="story-excerpt">${(s.excerpt||'').substring(0,120)}...</div>
-              <div class="read-time">📖 3 min read</div>
+              <div class="story-excerpt">${(s.excerpt||'').substring(0,100)}...</div>
+              <div class="read-time">📖 ${Math.floor(Math.random() * 8) + 3} min read</div>
             </div>
           `).join('')}
         </div>
@@ -291,84 +439,164 @@
     }
   }
   function getCatColor(cat) {
-    const colors = { Frontier:'#00E676', Capital:'#2196F3', Power:'#FF3D00', Infrastructure:'#FFC107', Sports:'#9C27B0', Culture:'#FF4081', Global:'#607D8B' };
+    const colors = { Frontier:'#00E676', Capital:'#2196F3', Power:'#FF3D00', Sports:'#9C27B0', Culture:'#FF4081', Global:'#607D8B' };
     return colors[cat] || '#D4AF37';
   }
 
-  // Trends & Risks
-  async function loadTrendsRisks() {
-    const mockTrends = [{ title:"AI funding in Africa triples YoY", description:"Nigeria, Kenya, South Africa lead with $600M raised", confidence:87 }];
-    const mockRisks = [{ title:"Currency volatility spreads to West Africa", description:"Parallel market premiums exceed 20% in Ghana, Nigeria", confidence:82 }];
-    const trends = await fetchJSON(`${BACKEND_URL}/api/trends`, mockTrends);
-    const risks = await fetchJSON(`${BACKEND_URL}/api/risks`, mockRisks);
-    document.getElementById('trendsRisksPanel').innerHTML = `
-      <div class="panel"><h4>📈 TREND SIGNALS · APPROVED</h4>${trends.map(t=>`<div class="trend-item"><strong>${t.title}</strong><br><span style="font-size:0.8rem;">${t.description}</span><div style="font-size:0.7rem;">Confidence: ${t.confidence}%</div></div>`).join('')}${trends.length===0?'<p>No active trends.</p>':''}</div>
-      <div class="panel"><h4>⚠️ RISK INDICATORS · EDITORIAL REVIEW</h4>${risks.map(r=>`<div class="risk-item"><strong>${r.title}</strong><br><span style="font-size:0.8rem;">${r.description}</span><div style="font-size:0.7rem;">Confidence: ${r.confidence}%</div></div>`).join('')}${risks.length===0?'<p>No active risks.</p>':''}</div>
+  // ---------- AFRICAN INTELLIGENCE (3 cards, backend approved) ----------
+  async function loadAfricanIntelligence() {
+    const mockIntel = {
+      whatThisMeans: "Africa’s economic fundamentals strengthen as capital flows into infrastructure and frontier tech. Expect sustained growth momentum into 2026.",
+      trendSignals: ["Fintech adoption accelerating across Africa", "Energy transition investments on the rise", "Intra-African trade hitting record levels"],
+      riskIndicators: ["Global inflation may impact import costs", "Currency volatility remains a concern", "Geopolitical tensions could disrupt trade"]
+    };
+    const data = await fetchJSON(`${BACKEND_URL}/api/african-intelligence`, mockIntel);
+    document.getElementById('intelligenceStrip').innerHTML = `
+      <div class="intel-card"><h4>💡 WHAT THIS MEANS</h4><p>${data.whatThisMeans}</p><div class="read-time">📖 3 min read</div></div>
+      <div class="intel-card"><h4>📈 TREND SIGNALS</h4><ul>${data.trendSignals.map(t => `<li>${t}</li>`).join('')}</ul><div class="read-time">📖 2 min read</div></div>
+      <div class="intel-card"><h4>⚠️ RISK INDICATORS</h4><ul>${data.riskIndicators.map(r => `<li>${r}</li>`).join('')}</ul><div class="read-time">📖 2 min read</div></div>
     `;
   }
 
-  // Latest Stories (10 + load more)
-  async function loadLatest(reset=true) {
-    if(reset) latestOffset=0;
+  // ---------- LATEST STORIES (10 items, with minutes ago) ----------
+  async function loadLatest(reset = true) {
+    if (reset) latestOffset = 0;
     const all = await fetchJSON(`${BACKEND_URL}/api/stories`, []);
-    if(reset) allStoriesCache = all;
+    if (reset) allStoriesCache = all;
     const end = latestOffset + LATEST_LIMIT;
     const latest = all.slice(0, end);
-    document.getElementById('latestList').innerHTML = latest.map(s => `
-      <li onclick="openSlidePanel('story','${s.title.replace(/'/g,"\\'")}','${(s.excerpt||'').substring(0,300).replace(/'/g,"\\'")}')">
-        <div><strong>${s.title}</strong><br><span class="read-time">📖 3 min read · ${s.section}</span></div>
-        <div style="color:#6C7A8A;">${new Date(s.publishedAt).toLocaleDateString()}</div>
+    const left = latest.slice(0,5);
+    const right = latest.slice(5,10);
+    const renderItem = (item) => `
+      <li onclick="openSlidePanel('story', '${item.title.replace(/'/g, "\\'")}', '${(item.excerpt||'').substring(0,300)}')">
+        <div><strong>${item.title}</strong><br><span class="read-time">📖 ${Math.floor(Math.random() * 8) + 3} min read</span></div>
+        <div class="time-ago">${Math.floor(Math.random() * 60) + 1} min ago</div>
       </li>
-    `).join('');
-    document.getElementById('loadMoreBtn').style.display = end >= all.length ? 'none' : 'block';
+    `;
+    document.getElementById('latestLeftList').innerHTML = left.map(renderItem).join('');
+    document.getElementById('latestRightList').innerHTML = right.map(renderItem).join('');
+    document.getElementById('loadMoreLatest').style.display = end >= all.length ? 'none' : 'block';
     latestOffset = end;
   }
-  document.getElementById('loadMoreBtn').onclick = () => loadLatest(false);
 
-  // Slide panel
+  // ---------- SHORT VIDEOS ----------
+  function loadVideos() {
+    const videos = [
+      { title: "Market wrap: Capital movers", duration: "1:20", category: "Capital" },
+      { title: "Frontier tech: African unicorns", duration: "2:15", category: "Frontier" },
+      { title: "Infrastructure week: key projects", duration: "1:45", category: "Infrastructure" }
+    ];
+    const html = videos.map(v => `
+      <div class="video-card" onclick="openSlidePanel('video', '${v.title}', 'Video preview: ${v.title}')">
+        <div class="video-thumb"><div class="play-btn">▶</div></div>
+        <div style="padding:12px;">${v.title} · ${v.duration}</div>
+        <div class="read-time" style="padding:0 12px 12px;">📖 2 min read</div>
+      </div>
+    `).join('');
+    document.getElementById('videosGrid').innerHTML = html;
+  }
+
+  // ---------- HEARTBEAT / TRACTION (real-time analytics) ----------
+  let currentArticleId = null;
+  function startHeartbeat(articleId) {
+    if (currentArticleId === articleId) return;
+    currentArticleId = articleId;
+    setInterval(() => {
+      if (currentArticleId) {
+        fetch(`${BACKEND_URL}/api/heartbeat`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ articleId: currentArticleId, seconds: 10 })
+        }).catch(e => console.log(e));
+      }
+    }, 10000);
+  }
+
+  // ---------- SLIDE PANEL (no popup) ----------
   window.openSlidePanel = (type, title, content) => {
-    document.getElementById('panelContent').innerHTML = `<h2>${title}</h2><p style="margin-top:20px;">${content}</p><button class="btn" style="margin-top:30px;" onclick="document.getElementById('slidePanel').classList.remove('open')">Close</button>`;
-    document.getElementById('slidePanel').classList.add('open');
+    const panel = document.createElement('div');
+    panel.className = 'slide-panel';
+    panel.innerHTML = `
+      <div style="position:relative; padding:24px;">
+        <button class="close-panel" style="position:absolute; top:16px; right:16px; background:none; border:none; color:#fff; font-size:1.5rem;">✕</button>
+        <h2>${title}</h2>
+        <p style="margin-top:20px;">${content}</p>
+        <button class="btn-sky" style="margin-top:30px;">Close</button>
+      </div>
+    `;
+    document.body.appendChild(panel);
+    panel.style.position = 'fixed'; panel.style.top = '0'; panel.style.right = '0';
+    panel.style.width = '500px'; panel.style.height = '100%'; panel.style.background = '#0E131C';
+    panel.style.zIndex = '2000'; panel.style.boxShadow = '-5px 0 25px rgba(0,0,0,0.5)';
+    panel.style.overflowY = 'auto';
+    panel.querySelector('.close-panel').onclick = () => panel.remove();
+    panel.querySelector('.btn-sky').onclick = () => panel.remove();
   };
-  document.getElementById('closePanelBtn').onclick = () => document.getElementById('slidePanel').classList.remove('open');
 
-  // Filter by category
+  // ---------- FILTER CATEGORY (for "View all") ----------
   window.filterCategory = (cat) => {
     const filtered = allStoriesCache.filter(s => s.section === cat);
-    document.getElementById('latestList').innerHTML = filtered.map(s => `
-      <li onclick="openSlidePanel('story','${s.title.replace(/'/g,"\\'")}','${(s.excerpt||'').substring(0,300).replace(/'/g,"\\'")}')">
-        <div><strong>${s.title}</strong><br><span class="read-time">📖 3 min read · ${s.section}</span></div>
-        <div>${new Date(s.publishedAt).toLocaleDateString()}</div>
-      </li>
-    `).join('');
-    document.getElementById('loadMoreBtn').style.display = 'none';
-    document.getElementById('slidePanel').classList.remove('open');
-    window.scrollTo({ top: document.getElementById('latestList').offsetTop - 80, behavior: 'smooth' });
+    document.getElementById('latestLeftList').innerHTML = filtered.slice(0,5).map(item => `<li onclick="openSlidePanel('story', '${item.title.replace(/'/g, "\\'")}', '${(item.excerpt||'').substring(0,300)}')"><div><strong>${item.title}</strong><br><span class="read-time">📖 3 min read</span></div><div class="time-ago">just now</div></li>`).join('');
+    document.getElementById('latestRightList').innerHTML = filtered.slice(5,10).map(item => `<li onclick="openSlidePanel('story', '${item.title.replace(/'/g, "\\'")}', '${(item.excerpt||'').substring(0,300)}')"><div><strong>${item.title}</strong><br><span class="read-time">📖 3 min read</span></div><div class="time-ago">just now</div></li>`).join('');
+    document.getElementById('loadMoreLatest').style.display = 'none';
+    window.scrollTo({ top: document.getElementById('latestLeftList').offsetTop - 100, behavior: 'smooth' });
   };
 
-  // Navigation
+  // ---------- EVENT LISTENERS ----------
+  document.getElementById('readFullBriefing').onclick = () => openSlidePanel('hero', document.getElementById('heroTitle').innerText, document.getElementById('heroExcerpt').innerText);
+  document.getElementById('viewAllSignals').onclick = () => alert("Full signals dashboard coming soon.");
+  document.getElementById('loadMoreLatest').onclick = () => loadLatest(false);
+  document.getElementById('signInBtn').onclick = () => alert("Sign in to personalize your intelligence feed.");
+  document.getElementById('searchIcon').onclick = () => alert("Search intelligence archive.");
+  ["powerMoreLink","intelMoreLink","intelligenceMoreLink","latestArchiveLink","videosMoreLink"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.onclick = () => alert("Category archive page – more intelligence stories will appear here.");
+  });
+
+  // Modal logic
+  const modal = document.getElementById("nominateModal");
+  document.getElementById("openNominateModalBtn").onclick = () => modal.style.display = "flex";
+  document.getElementById("closeModalBtn").onclick = () => modal.style.display = "none";
+  window.onclick = (e) => { if(e.target == modal) modal.style.display = "none"; };
+  document.getElementById("modalSubmitBtn").onclick = () => {
+    const name = document.getElementById("nomFullName").value.trim();
+    const region = document.getElementById("nomRegion").value.trim();
+    const impact = document.getElementById("nomImpact").value.trim();
+    if(!name || !region || !impact) { alert("Please fill required fields."); return; }
+    document.getElementById("modalSuccess").style.display = "block";
+    setTimeout(() => { modal.style.display = "none"; document.getElementById("modalSuccess").style.display = "none"; }, 2000);
+  };
+  document.getElementById("subscribeBriefingBtn").onclick = () => {
+    const email = document.getElementById("subEmail").value.trim();
+    if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert("Enter valid email."); return; }
+    document.getElementById("subSuccessMsg").style.display = "block";
+    setTimeout(() => document.getElementById("subSuccessMsg").style.display = "none", 3000);
+  };
+
+  // Navigation links
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
       const cat = link.dataset.category;
       if (cat === 'all') window.location.reload();
-      else if (cat === 'Signals') document.getElementById('signalsGrid').scrollIntoView({ behavior: 'smooth' });
+      else if (cat === 'Signals') document.getElementById('liveSignalsList').scrollIntoView({ behavior: 'smooth' });
       else filterCategory(cat);
     });
   });
-  document.getElementById('signInBtn').onclick = () => alert("Personalized intelligence coming soon.");
 
-  // Initialise
+  // Initial load
   loadHero();
   fetchLiveSignals();
   loadMarket();
-  loadBriefing();
+  loadPowerStories();
+  loadIntelligenceFeed();
   loadCategoryStreams();
-  loadTrendsRisks();
+  loadAfricanIntelligence();
   loadLatest(true);
-  setInterval(loadMarket, 60000);
+  loadVideos();
 
-  // RSS ingestion note – backend will handle 30+ global feeds, 5 Nigerian core, 15 pan-African sources.
-  console.log("AfriQAI frontend ready – Daily Briefing weighting: 40% Nigeria (any source), 30% Africa, 30% Global with Africa impact.");
+  // Auto-refresh live signals every 120 seconds
+  setInterval(fetchLiveSignals, 120000);
+  setInterval(loadMarket, 60000);
 </script>
 </body>
 </html>
