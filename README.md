@@ -1,0 +1,2 @@
+# AfriQAI
+My AfriQAI project
